@@ -45,6 +45,20 @@ public class AppTest
     public void testAverage() {
         App nApp = new App();
         double average = nApp.getAverages(2, 2, 2);
-        assertTrue("I was expecting 2", average == 5);
+        assertTrue("I was expecting 2", average == 2);
+    }
+
+    @Test
+    public void testCart() {
+        ProductItem cookies1 = new ProductItem("cookies", 3, 2, "cookies101");
+        ProductItem milk = new ProductItem("milk", 5, 5, "milk202");
+        Cart cart = new Cart();
+        cart.addToCart(cookies1);
+        cart.addToCart(milk);
+        double totalPrice = cart.totalPrice();
+        assertTrue("your total cart should be 31", totalPrice == 31);
+        cart.removeFromCart("cookies101");
+        totalPrice = cart.totalPrice();
+        assertTrue("Your new price should be 25", totalPrice == 25);        
     }
 }

@@ -1,9 +1,101 @@
 package com.innocent.lab;
 
+import java.util.ArrayList;
+
+
 /**
  * Hello world!
  *
  */
+
+class ProductItem {
+  private String productName;
+  private double price;
+  private int quantity;
+  private String uniqueId;
+
+  ProductItem(String productName, double price, int quantity, String uuid) {
+    this.productName = productName;
+    this.price = price;
+    this.quantity = quantity;
+    this.uniqueId = uuid;
+  }
+
+  /** Gettes */
+
+  public String getUuid() {
+    return uniqueId;
+  }
+  
+  double totalPrice() {
+    return price * quantity;
+  };
+
+  void printTotal() {
+    System.out.println("My name is " + productName + " " + " I have " + quantity 
+    + " In the cart for " + totalPrice());
+  }
+}
+
+class Cart {
+  ArrayList<ProductItem> listOfItems;
+
+  public Cart() {
+    listOfItems = new ArrayList<ProductItem>();
+  }
+
+  public void addToCart(ProductItem item) {
+    listOfItems.add(item);
+  }
+
+  public void removeFromCart(String uuid) {
+    ProductItem toRemove = null;
+    for(ProductItem item:listOfItems) {
+      if(item.getUuid() == uuid) {
+        toRemove = item;
+      }
+    }
+    if(toRemove != null) {
+      listOfItems.remove(toRemove);
+    }
+  }
+
+  public double totalPrice() {
+    double total = 0;
+    for(ProductItem item:listOfItems) {
+      total += item.totalPrice();
+    }
+    return total;
+  }
+
+}
+
+class Teacher{
+  //Parent class constructor
+  String mainSubject;
+  Teacher(String a){
+    mainSubject = a;
+ System.out.println("Constructor of Teacher with int " + a);
+  }
+
+  void teach() {
+    System.out.println("I am a teacher I write on the blackboard.");//
+  }
+}
+
+class MathTeacher extends Teacher {
+  String sepecialty;
+  MathTeacher(String a, String specialty){
+
+  super(a);
+ System.out.println("Constructor of math teacher");
+  }
+
+  void teach() {
+    super.teach();
+    System.out.println("I am a match teacher sometimes I run computations");
+  }
+}
 
 
 
@@ -79,19 +171,25 @@ public class App
     public static void main( String[] args )
     {
         App ap = new App();
-        ap.addTwoNumbers(2, 3);
+        //ap.addTwoNumbers(2, 3);
         // System.out.println("The sume of 2 and 2 is " + ap.addTwoNumbers(2, 2));
         // System.out.println( "Hello World Denis!" );
-        int a = 14;
-        ap.setParamTo10(a);
-        System.out.println("The value of a is " + a);
+        //int a = 14;
+        //ap.setParamTo10(a);
+        //System.out.println("The value of a is " + a);
        /* Person p = new Person();
         Person anotherPerson = new Person();
         p.name = "Adrian";
         System.out.println("Before name change, persons name is " + p.name);
         ap.changePersonName(p, "Denis");
         System.out.println("persons name is " + p.name);*/
-        double average = ap.getAverages(1,1,1);
+        // double average = ap.getAverages(1,1,1);
+
+        ProductItem item1 = new ProductItem("tartine", 20, 3, "uuid");
+        item1.printTotal();
+
+       Teacher mathTeacher = new MathTeacher("Maths");
+       mathTeacher.teach();
         
    }
 }
