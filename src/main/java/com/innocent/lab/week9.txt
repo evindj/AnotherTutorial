@@ -1,0 +1,6 @@
+1- we will have a virtual class
+a virtual class as a set of lessons
+lessons can be video, problem solving or audio
+math and philosophy are virtual classes.
+A virtual day is a set of virtual classes
+a virtual class has an instructor.

@@ -73,6 +73,7 @@ class Cart {
 class Teacher{
   //Parent class constructor
   String mainSubject;
+  String color;
   Teacher(String a){
     mainSubject = a;
  System.out.println("Constructor of Teacher with int " + a);
@@ -85,6 +86,7 @@ class Teacher{
 
 class MathTeacher extends Teacher {
   String sepecialty;
+  String color;
   MathTeacher(String a, String specialty){
 
   super(a);
@@ -93,6 +95,7 @@ class MathTeacher extends Teacher {
 
   void teach() {
     super.teach();
+    super.color = "blue";
     System.out.println("I am a match teacher sometimes I run computations");
   }
 }
@@ -185,11 +188,17 @@ public class App
         System.out.println("persons name is " + p.name);*/
         // double average = ap.getAverages(1,1,1);
 
-        ProductItem item1 = new ProductItem("tartine", 20, 3, "uuid");
-        item1.printTotal();
+        //ProductItem item1 = new ProductItem("tartine", 20, 3, "uuid");
+       // item1.printTotal();
 
-       Teacher mathTeacher = new MathTeacher("Maths");
-       mathTeacher.teach();
+       //Teacher mathTeacher = new MathTeacher("Maths", "null");
+      // mathTeacher.teach();
+      VirtualDay day = new VirtualDay();
+      Instructor mathTeacher = new Instructor("Denis", "The Math");
+      day.addClass(new MathClass(mathTeacher));
+      Instructor philoTeacher = new Instructor("Astrid", "Ethics");
+      day.addClass(new PhiloClass(philoTeacher));
+      day.go();
         
    }
 }
