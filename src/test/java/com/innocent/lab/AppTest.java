@@ -25,6 +25,7 @@ public class AppTest
         App nApp = new App();
         int four = nApp.addTwoNumbers(2,2);
         assertTrue(four == 4);
+	assertTrue(false);
     }
 
     @Test
